@@ -20,49 +20,46 @@ function WebboardViewWindow() {
 			Ti.API.warn(e.index);
 		});
 		
-		var header = Ti.UI.createTableViewRow({
-			height: 60,
-			allowsSelection: false
+		var DetailedTopicTableViewRow = require('ui/common/DetailedTopicTableViewRow');
+		var header = new DetailedTopicTableViewRow();
+		header.topicLabel.text = "What happened to Peter?";
+		header.dateLabel.text = "Submitted 3 hours ago by Test";
+		
+		var data = [];
+		
+		header.replyTextField.addEventListener('return', function(e) {
+			var reply = self.topic.addReply(header.replyTextField.value);
+			
+			var row = new ReplyTableViewRow(table);
+			row._setReply(reply);
+			data.push(row);
+			
+			table.setData(data);	
+			
+			header.replyTextField.value = "";
 		});
+
 		
-		var topicLabel = Ti.UI.createLabel({
-			text: 'What happened to Peter?',
-			top: 5,
-			left: 5,
-			width: 'auto',
-			height: 30,
-			font: { fontSize: 20, fontFamily: 'Helvetica Neue' }
-		})
-		header.add(topicLabel);
+		var ReplyTableViewRow = require('ui/common/ReplyTableViewRow');
 		
-		var subLabel = Ti.UI.createLabel({
-			text: 'Submitted 3 hours ago by Test',
-			top: 30,
-			left: 10,
-			width: 'auto',
-			height: 20,
-			font: { fontSize: 10, fontFamily: 'Helvetica Neue' }
-		})
-		header.add(subLabel);
-		
-		
-		var data = [
-			header,
-			{ title: 'What happened to Peter?' },
-			{ title: 'Who is your favourite character?' },
-			{ title: 'What do you think about season finale?' },
-			{ title: 'What happened to Peter?' },
-			{ title: 'Who is your favourite character?' },
-			{ title: 'What do you think about season finale?' },
-			{ title: 'What happened to Peter?' },
-			{ title: 'Who is your favourite character?' },
-			{ title: 'What do you think about season finale?' },
-			{ title: 'What happened to Peter?' },
-			{ title: 'Who is your favourite character?' },
-			{ title: 'What do you think about season finale?' }
-		];
-	
-		table.setData(data);
+		self._setTopic = function(topic) {
+			self.topic = Topic.get(topic.id);
+			
+			header.topicLabel.text = self.topic.title;
+			header.dateLabel.text = "Submitted " + since(self.topic.created_at);
+			
+			data = [
+				header
+			];
+			
+			for (var i=0;i<self.topic.replies.length;i++) {
+				var row = new ReplyTableViewRow(table);
+				row._setReply(self.topic.replies[i]);
+				data.push(row);
+			}
+			
+			table.setData(data);
+		};
 	})();
 	
 	return self;

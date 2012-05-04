@@ -13,8 +13,13 @@ function WebboardAddWindow(__args) {
 		height: 167,
 		editable: true
 	});
-	
 	self.add(topicTextarea);
+	
+	self.addEventListener('return', function(e) {
+		Topic.create(topicTextarea.value);
+		self.close();
+		topicTextarea.value = "";
+	});
 	
 	self.addEventListener('open', function(e) {
 		topicTextarea.focus();
