@@ -18,10 +18,10 @@ function WebboardMainWindow() {
 	self.add(table);
 	
 	(function() {
-		var WebboardHeaderTableViewRow = require('ui/common/WebboardHeaderTableViewRow');
-		var header = new WebboardHeaderTableViewRow();
+		var WebboardHeaderTableViewRow = require('ui/common/Wb_WebboardHeaderTableViewRow');
+		var header = new WebboardHeaderTableViewRow('Reya','Famous Lakorn');
 		
-		var WebboardAddWindow = require('ui/common/WebboardAddWindow');
+		var WebboardAddWindow = require('ui/common/Wb_WebboardAddWindow');
 		var addWindow = new WebboardAddWindow();
 		header.addButton.addEventListener('click', function(e) {
 			self.containingTab.open(addWindow);
@@ -31,7 +31,7 @@ function WebboardMainWindow() {
 			header
 		];
 		
-		var TopicTableViewRow = require('ui/common/TopicTableViewRow');
+		var TopicTableViewRow = require('ui/common/Wb_TopicTableViewRow');
 		var topics = Topic.all();
 		for (var i=0;i<topics.length;i++) {
 			var row = new TopicTableViewRow();
@@ -51,7 +51,7 @@ function WebboardMainWindow() {
 			table.setData(data);
 		});
 		
-		var WebboardViewWindow = require('ui/common/WebboardViewWindow');
+		var WebboardViewWindow = require('ui/common/Wb_WebboardViewWindow');
 		var viewWindow = new WebboardViewWindow();
 		table.addEventListener('click', function(e){
 			if (e.index == 0) return;

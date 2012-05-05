@@ -20,7 +20,7 @@ function WebboardViewWindow() {
 			Ti.API.warn(e.index);
 		});
 		
-		var DetailedTopicTableViewRow = require('ui/common/DetailedTopicTableViewRow');
+		var DetailedTopicTableViewRow = require('ui/common/Wb_DetailedTopicTableViewRow');
 		var header = new DetailedTopicTableViewRow();
 		header.topicLabel.text = "What happened to Peter?";
 		header.dateLabel.text = "Submitted 3 hours ago by Test";
@@ -40,7 +40,7 @@ function WebboardViewWindow() {
 		});
 
 		
-		var ReplyTableViewRow = require('ui/common/ReplyTableViewRow');
+		var ReplyTableViewRow = require('ui/common/Wb_ReplyTableViewRow');
 		
 		self._setTopic = function(topic) {
 			self.topic = Topic.get(topic.id);

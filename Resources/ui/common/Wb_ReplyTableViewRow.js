@@ -15,7 +15,7 @@ ReplyTableViewRow = function(table) {
 		font: { fontSize: 14, fontFamily: 'Helvetica Neue' }
 	})
 	row.add(row.contentLabel);
-	
+
 	row.replyToolbar = Ti.UI.createView({
 		left: 5,
 		top: 35,
@@ -35,7 +35,7 @@ ReplyTableViewRow = function(table) {
 		font: { fontSize: 14, fontFamily: 'Helvetica Neue' }
 	})
 	row.replyToolbar.add(row.replyTextField);
-	
+
 	row.upButton = Ti.UI.createButton({
 		left: 0,
 		top: 25,
@@ -66,6 +66,50 @@ ReplyTableViewRow = function(table) {
 	})
 	row.replyToolbar.add(row.replyButton);
 	
+	/** starting comments of comment **/
+	
+/*
+	row.commentsOfComment = Ti.UI.createView({
+		left: 5,
+		top: 35,
+		width: 350,
+		height: 30 * 3
+	});
+	row.add(row.commentsOfComment);
+	
+	var coc1 = Ti.UI.createLabel({
+		text: 'wait...',
+		top: 0,
+		left: 20,
+		width: 350,
+		height: 30,
+		font: { fontSize: 14, fontFamily: 'Helvetica Neue' }
+	})
+	
+	var coc2 = Ti.UI.createLabel({
+		text: 'this Stanford person...will dominate Thailand and SEA!',
+		top: 30*1+5,
+		left: 20,
+		width: 350,
+		height: 30,
+		font: { fontSize: 14, fontFamily: 'Helvetica Neue' }
+	})
+	
+		var coc3 = Ti.UI.createLabel({
+		text: 'Trush me..do you?',
+		top: 30*2+5,
+		left: 20,
+		width: 100,
+		height: 30,
+		font: { fontSize: 14, fontFamily: 'Helvetica Neue' }
+	})
+	row.commentsOfComment.add(coc1);	
+	row.commentsOfComment.add(coc2);	
+	row.commentsOfComment.add(coc3);
+	
+	row.height = 30+row.commentsOfComment.height; //reset the height
+*/		
+/** end comments of comment section **/
 	
 	row._setReply = function(reply) {
 		row.reply = reply;
@@ -98,5 +142,4 @@ ReplyTableViewRow = function(table) {
 	
 	return row;
 }
-
 module.exports = ReplyTableViewRow;

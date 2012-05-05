@@ -1,4 +1,4 @@
-WebboardHeaderTableViewRow = function() {
+WebboardHeaderTableViewRow = function(_showName,_showSubName) {
 	var header = Ti.UI.createTableViewRow({
 		height: 140,
 		selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE
@@ -15,7 +15,7 @@ WebboardHeaderTableViewRow = function() {
 	header.add(header.thumbnail);
 	
 	header.nameLabel = Ti.UI.createLabel({
-		text: 'White Collar',
+		text: _showName,
 		top: 5,
 		left: 135,
 		width: 'auto',
@@ -24,7 +24,7 @@ WebboardHeaderTableViewRow = function() {
 	header.add(header.nameLabel);
 	
 	header.subNameLabel = Ti.UI.createLabel({
-		text: 'Season 3 Episode 14',
+		text: _showSubName,
 		top: 20,
 		left: 135,
 		width: 'auto',
@@ -41,32 +41,32 @@ WebboardHeaderTableViewRow = function() {
 	});
 	header.add(header.peopleIcon);
 	
-	header.peopleLabel = Ti.UI.createLabel({
+	header.numCheckinsLabel = Ti.UI.createLabel({
 		text: '13122',
 		top: 70,
 		left: 160,
-		width: 40,
-		height: 20
+		width: 60,
+		height: 14
 	})
-	header.add(header.peopleLabel);
+	header.add(header.numCheckinsLabel);
 	
-	header.likeIcon = Ti.UI.createImageView({
+	header.friendIcon = Ti.UI.createImageView({
 		top: 70,
 		left: 210,
 		width: 20,
 		height: 20,
 		backgroundColor: '#CCC'
 	});
-	header.add(header.likeIcon);
+	header.add(header.friendIcon);
 	
-	header.likeLabel = Ti.UI.createLabel({
+	header.numFriendsLabel = Ti.UI.createLabel({
 		text: '5',
 		top: 70,
 		left: 235,
 		width: 40,
-		height: 20
+		height: 14
 	})
-	header.add(header.likeLabel);
+	header.add(header.numFriendsLabel);
 	
 	
 	header.searchTextField = Ti.UI.createTextField({

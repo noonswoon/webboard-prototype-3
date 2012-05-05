@@ -1,7 +1,7 @@
 function ApplicationTabGroup() {
 	var self = Ti.UI.createTabGroup();
 	
-	var WebboardMainWindow = require('ui/common/WebboardMainWindow');
+	var WebboardMainWindow = require('ui/common/Wb_WebboardMainWindow');
 	
 	{
 		var win = new WebboardMainWindow();

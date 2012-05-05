@@ -1,7 +1,7 @@
 DetailedTopicTableViewRow = function() {
 	var header = Ti.UI.createTableViewRow({
 		height: 90,
-		allowsSelection: false,
+		selectionStyle: Titanium.UI.iPhone.TableViewCellSelectionStyle.NONE,
 		className: "DetailedTopicTableViewRow"
 	});
 	
